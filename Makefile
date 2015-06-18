@@ -5,11 +5,11 @@ CC      := g++
 # Warning levels
 WARN    :=
 # Optimisation
-OFLAGS  := 
+OFLAGS  := -std=c++11
 # Link Options
-LDFLAGS := `sdl2-config --libs`
+LDFLAGS := 
 # Link Libraries
-LDLIBS 	:= `sdk2-config --cflags`
+LDLIBS 	:= `sdl2-config --libs`
 
 # Source directory
 SRCDIR	:= src
@@ -18,10 +18,10 @@ INCDIR	:= include
 # Object directory
 OBJDIR	:= obj
 
-CFLAGS	:= -I $(INCDIR)
+CFLAGS	:= -I $(INCDIR) `sdl2-config --cflags`
 
 # setting the vpath (additionnal search path for make)
-VPATH	:= $(INCDIR) $(SRCDIR) $(OBJDIR)
+VPATH	:= $(INCDIR) $(SRCDIR) $(OBJDIR) 
 
 CPP_SRCS    = $(wildcard src/*.cpp)
 OBJ_FILES   = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(CPP_SRCS))

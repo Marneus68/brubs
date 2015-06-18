@@ -11,7 +11,8 @@ namespace br {
     }
 
     LoadedState & LoadedState::operator=(const LoadedState& _state) {
-    
+        machine = _state.machine;
+        return *this;
     }
 
     void LoadedState::controlLoop(SDL_Event * e) {

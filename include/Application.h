@@ -2,7 +2,7 @@
 #define __APPLICATION_H__
 
 extern "C" {
-#include <SDL2/SDL.h>
+#include <SDL.h>
 }
 
 #include "Machine.h"
