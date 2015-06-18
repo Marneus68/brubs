@@ -9,7 +9,7 @@ namespace br {
 
     }
 
-    void Application::PreInit(void) {
+    Application::~Application() {
 
     }
 
@@ -19,14 +19,15 @@ namespace br {
             return;
         }
         
-        window = SDL_CreateWindow("Level Editor", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 
+        window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 
                 800, 600, SDL_WINDOW_SHOWN);
 
         screen = SDL_GetWindowSurface(window);
+    }
 
-
+    void Application::PostInit(void) {
         // Set the StateMachine's State
-        state = new LoadedState(this);
+        //state = new LoadedState(this);
     }
 
     void Application::Run(void) {
@@ -45,16 +46,14 @@ namespace br {
     }
 
     void Application::Close(void) {
-        SDL_DestroyWindow(window);
-        window = NULL;
         SDL_FreeSurface(screen);
-        screen = NULL;
+        SDL_DestroyWindow(window);
         SDL_Quit();
     }
 
     void Application::Start(void) {
-        PreInit();
         Init();
+        PostInit();
         Run();
         Close();
     }

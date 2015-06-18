@@ -1,14 +1,21 @@
 #include <iostream>
 
-#include "Application.h"
+#include "GameApplication.h"
+#include "EditorApplication.h"
 
 using namespace br;
 
 int main(int argc, const char *argv[])
 {
-    //std::cout << "Hello world !" << std::endl;
-    Application app;
-    app.Start();
+    if (argc > 1) {
+        if (argv[1][0] == 'L') {
+            EditorApplication app;
+            app.Start();
+        }
+    } else {
+        GameApplication app;
+        app.Start();
+    }
     return 0;
 }
 
