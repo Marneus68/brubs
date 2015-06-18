@@ -7,9 +7,9 @@ WARN    :=
 # Optimisation
 OFLAGS  := 
 # Link Options
-LDFLAGS := 
+LDFLAGS := `sdl2-config --libs`
 # Link Libraries
-LDLIBS 	:= -lSDL2
+LDLIBS 	:= `sdk2-config --cflags`
 
 # Source directory
 SRCDIR	:= src
